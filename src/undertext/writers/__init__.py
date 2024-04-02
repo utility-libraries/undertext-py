@@ -6,18 +6,18 @@ import typing as t
 from os import PathLike
 from pathlib import Path
 from ..structures import Caption
-# from .microdvd import write_microdvd
+from .microdvd import write_microdvd
 # from .subrip import write_subrip
 # from .webvtt import write_webvtt
 
 
 EXT_MAP = dict(
     # srt=write_subrip,
-    # sub=write_microdvd,
+    sub=write_microdvd,
     # vtt=write_webvtt,
 )
 ALIAS_MAP = dict(
-    # microdvd=write_microdvd,
+    microdvd=write_microdvd,
     # subrip=write_subrip,
     # webvtt=write_webvtt,
 )
