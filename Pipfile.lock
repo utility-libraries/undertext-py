@@ -32,6 +32,7 @@
                 "sha256:75e10f767a433d9a86e50d83f418e83efc18ede923ee5ff7df93b6cb0306c5d4"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3.8'",
             "version": "==1.2.1"
         },
         "certifi": {
@@ -445,6 +446,7 @@
                 "sha256:a262933de0b484c53408f9edae2e7821c1c45a3314ff2df9bdd343aa7ab8edc0"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3.8'",
             "version": "==5.0.0"
         },
         "urllib3": {
