@@ -7,18 +7,18 @@ from os import PathLike
 from pathlib import Path
 from ..structures import Caption
 from .microdvd import read_microdvd
-# from .subrip import read_subrip
+from .subrip import read_subrip
 # from .webvtt import read_webvtt
 
 
 EXT_MAP = dict(
-    # srt=read_subrip,
+    srt=read_subrip,
     sub=read_microdvd,
     # vtt=read_webvtt,
 )
 ALIAS_MAP = dict(
     microdvd=read_microdvd,
-    # subrip=read_subrip,
+    subrip=read_subrip,
     # webvtt=read_webvtt,
 )
 
