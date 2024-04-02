@@ -52,4 +52,9 @@ setuptools.setup(
     install_requires=install_requires,
     extras_require=extras_require,
     test_suite="tests",
+    entry_points={
+        "console_scripts": [
+            "undertext = undertext.__main__:main"
+        ]
+    },
 )
