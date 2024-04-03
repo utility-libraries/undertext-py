@@ -1,11 +1,12 @@
 # Notes
 
-| Format            | suffix |             |
-|-------------------|--------|-------------|
-| WebVTT            | `.vtt` |             |
-| SubRipper         | `.srt` |             |
-| MicroDVD          | `.sub` |             |
-| Sub Station Alpha | `.ssa` |             |
+| Format                                  | suffix |             |
+|-----------------------------------------|--------|-------------|
+| [WebVTT](#webvtt)                       | `.vtt` |             |
+| [SubViewer](#subviewer)                 | `.sbv` |             |
+| [SubRipper](#subrip)                    | `.srt` |             |
+| [MicroDVD](#microdvd)                   | `.sub` |             |
+| [Sub Station Alpha](#sub-station-alpha) | `.ssa` |             |
 
 ## WebVTT
 
@@ -23,6 +24,19 @@ WEBVTT
 
 00:18.000 --> 00:20.000
 <v Roger Bingham>And with me is Neil deGrasse Tyson
+```
+
+## SubViewer
+
+```sbv
+0:00:01.000,0:00:03.000
+Hello, and welcome to our video!
+
+0:00:04.000,0:00:06.000
+In this video, we will be discussing the SBV file format.
+
+0:00:07.000,0:00:10.000
+The SBV format is commonly used for storing subtitles for videos.[br]Also allows for newlines
 ```
 
 ## SubRip

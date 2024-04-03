@@ -26,6 +26,7 @@ pip3 install undertext
 | ext    | name                      | read  | write |
 |--------|---------------------------|-------|-------|
 | `.ass` | Advanced SubStation Alpha | ❌     | ❌     |
+| `.sbv` | SubViewer                 | ❌     | ✅     |
 | `.srt` | SubRip                    | ✅     | ✅     |
 | `.ssa` | Sub Station Alpha         | ❌     | ❌     |
 | `.sub` | MicroDVD                  | ✅     | ✅     |
