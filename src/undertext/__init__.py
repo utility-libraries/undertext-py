@@ -32,7 +32,7 @@ __maintainer__ = "PlayerG9"
 __email__ = None
 __status__ = "Prototype"  # Prototype, Development, Production
 __description__ = "library to load, edit and save different formats of subtitles"
-__version_info__ = (0, 1, 0)
+__version_info__ = (0, 2, 0)
 __version__ = '.'.join(str(_) for _ in __version_info__)
 
 from .exceptions import *
