@@ -17,6 +17,10 @@ read_parser.add_argument("input_fp", metavar="input",
                          help="input file")
 read_parser.add_argument("--fmt", type=str, default=ap.SUPPRESS,
                          help="specify the format if it can't be guessed from the file extension")
+read_parser.add_argument('--after', type=cli.parse_time,
+                         help="show only captions that start after")
+read_parser.add_argument('--before', type=cli.parse_time,
+                         help="show only captions that end before")
 read_parser.add_argument("--fps", type=float, default=ap.SUPPRESS,
                          help=ap.SUPPRESS)
 
