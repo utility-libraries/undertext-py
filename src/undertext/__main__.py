@@ -3,7 +3,7 @@ r"""
 
 """
 import argparse as ap
-from . import __cli__ as cli
+from . import __cli__ as cli, util
 
 
 parser = ap.ArgumentParser(prog="undertext", formatter_class=ap.ArgumentDefaultsHelpFormatter)

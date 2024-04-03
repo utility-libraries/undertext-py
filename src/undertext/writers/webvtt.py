@@ -6,6 +6,7 @@ import io
 import typing as t
 from os import PathLike
 from ..structures import Caption
+from ..util import format_ts_dot as format_ts
 
 
 def write_webvtt(captions: t.List[Caption], filename: t.Union[str, PathLike, t.TextIO],
@@ -41,11 +42,3 @@ def write_webvtt(captions: t.List[Caption], filename: t.Union[str, PathLike, t.T
             file.write(stream.getvalue())
     else:
         filename.write(stream.getvalue())
-
-
-def format_ts(ts: float) -> str:
-    seconds = ts % 60
-    minutes = int((ts / 60) % 60)
-    hours = int(ts / 3600)
-
-    return f"{hours:0>2}:{minutes:0>2}:{format(seconds, '.3f'):0>6}"

@@ -7,9 +7,9 @@ import typing as t
 from pathlib import Path
 from ..structures import Caption
 from ..exceptions import *
+from ..util import parse_time_comma as parse_time
 
 
-TIME_RE = re.compile(r"(?:(?P<h>\d{2,}):)?(?P<m>\d{2}):(?P<s>\d{2},\d{3})")
 RANGE_RE = re.compile(r"^(?P<start>(\d{2,}:)?\d{2}:\d{2},\d{3}) --> (?P<end>(\d{2,}:)?\d{2}:\d{2},\d{3})"
                       r"(?P<style> .*)?$")
 
@@ -46,15 +46,3 @@ def read_subrip(fp: Path) -> t.List[Caption]:
             )
 
     return captions
-
-
-def parse_time(text: str) -> float:
-    match = TIME_RE.fullmatch(text)
-    if match is None:
-        raise FormatException(f"Bad time format: {text!r}")
-
-    hours = match.group("h")
-    hours = 0 if hours is None else int(hours)
-    minutes = int(match.group("m"))
-    seconds = float(match.group("s").replace(",", "."))
-    return (hours * 3600) + (minutes * 60) + seconds
