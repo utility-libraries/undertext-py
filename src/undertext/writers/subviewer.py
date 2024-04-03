@@ -20,7 +20,6 @@ def write_subviewer(captions: t.List[Caption], filename: t.Union[str, PathLike, 
         if i != 0:
             stream.write("\r\n")
 
-        stream.write(f"{i+1}\r\n")
         stream.write(f"{format_ts(caption.start)},{format_ts(caption.end)}\r\n")
         text = caption.text.replace('\n', '[br]')
         stream.write(f"{text}\r\n")
