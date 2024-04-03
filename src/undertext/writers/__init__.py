@@ -41,7 +41,7 @@ def dumps(captions: t.List[Caption], fp: t.Union[str, PathLike], fmt: str = None
         fmt = fp.suffix[1:]
         writer = EXT_MAP.get(fmt.lower())
     else:
-        writer = ALIAS_MAP.get(fmt.lower())
+        writer = ALIAS_MAP.get(fmt.lower()) or EXT_MAP.get(fmt.lower())
 
     if writer is None:
         raise ValueError(f"Unknown format ({fmt!s})")

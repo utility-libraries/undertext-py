@@ -38,7 +38,7 @@ def loads(fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> t.List[Capti
         fmt = fp.suffix[1:]
         reader = EXT_MAP.get(fmt.lower())
     else:
-        reader = ALIAS_MAP.get(fmt.lower())
+        reader = ALIAS_MAP.get(fmt.lower()) or EXT_MAP.get(fmt.lower())
 
     if reader is None:
         raise ValueError(f"Unknown format ({fmt!s})")
