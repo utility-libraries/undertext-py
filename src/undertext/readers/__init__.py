@@ -8,10 +8,12 @@ from pathlib import Path
 from ..structures import Caption
 from .microdvd import read_microdvd
 from .subrip import read_subrip
+from .subviewer import read_subviewer
 from .webvtt import read_webvtt
 
 
 EXT_MAP = dict(
+    sbv=read_subviewer,
     srt=read_subrip,
     sub=read_microdvd,
     vtt=read_webvtt,
@@ -19,6 +21,7 @@ EXT_MAP = dict(
 ALIAS_MAP = dict(
     microdvd=read_microdvd,
     subrip=read_subrip,
+    subviewer=read_subviewer,
     webvtt=read_webvtt,
 )
 
