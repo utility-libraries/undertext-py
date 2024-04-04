@@ -40,3 +40,4 @@ from .structures import *
 from . import readers, writers
 from .readers import loads
 from .writers import dumps
+from .extra import clean_captions
