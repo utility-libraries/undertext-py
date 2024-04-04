@@ -72,6 +72,9 @@ class Caption:
         self._lines.clear()
         self._lines.extend(lines)
 
+    def with_lines(self, lines: T_LINES) -> 'Caption':
+        return Caption(start=self.start, end=self.end, text=lines, id=self.id, styles=self.styles)
+
     @property
     def text(self) -> str:
         return "\n".join(self.lines)
@@ -83,6 +86,9 @@ class Caption:
         else:
             self.lines = value
 
+    def with_text(self, text: T_TEXT) -> 'Caption':
+        return Caption(start=self.start, end=self.end, text=text, id=self.id, styles=self.styles)
+
     @property
     def id(self) -> t.Optional[str]:
         return self._id
@@ -91,6 +97,9 @@ class Caption:
     def id(self, value: t.Optional[str]) -> None:
         self._id = value if value is None else str(value)
 
+    def with_id(self, id: t.Optional[str]) -> 'Caption':
+        return Caption(start=self.start, end=self.end, text=self.text, id=id, styles=self.styles)
+
     @property
     def styles(self) -> t.Optional[T_STYLE]:
         return self._styles
@@ -98,3 +107,6 @@ class Caption:
     @styles.setter
     def styles(self, value: t.Optional[T_STYLE]) -> None:
         self._styles = value
+
+    def with_styles(self, styles: T_STYLE) -> 'Caption':
+        return Caption(start=self.start, end=self.end, text=self.text, id=self.id, styles=styles)
