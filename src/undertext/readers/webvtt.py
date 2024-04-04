@@ -53,8 +53,6 @@ def read_webvtt(fp: Path) -> t.List[Caption]:
                         key, sep, value = style.partition(":")
                         if sep is None:
                             raise FormatException(f"Bad style format ({style})")
-                        if key not in {"line", "position", "size", "align"}:
-                            raise KeyError(f"Invalid style: {key!r}")
                         styles[key] = value
 
                 text_lines = []

@@ -26,10 +26,7 @@ def write_webvtt(captions: t.List[Caption], filename: t.Union[str, PathLike, t.T
         if caption.styles:
             stream.write(" ")
             for key, value in caption.styles.items():
-                if key in {"line", "position", "size", "align"}:
-                    stream.write(f"{key}:{value}")  # todo: cleanup of style values
-                # else:  # don't raise. maybe "bad" style comes from other format
-                #     raise KeyError(f"Unknown style: {key!r}")
+                stream.write(f"{key}:{value}")  # todo: cleanup of style values
         stream.write("\r\n")
         if len(caption.lines) == 1:
             stream.write(f"{caption.text}\r\n")
