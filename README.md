@@ -23,16 +23,24 @@ pip3 install undertext
 
 ## File Formats
 
-| ext    | name                      | read  | write |
-|--------|---------------------------|-------|-------|
-| `.ass` | Advanced SubStation Alpha | ❌     | ❌     |
-| `.sbv` | SubViewer                 | ✅     | ✅     |
-| `.srt` | SubRip                    | ✅     | ✅     |
-| `.ssa` | Sub Station Alpha         | ❌     | ❌     |
-| `.sub` | MicroDVD                  | ✅     | ✅     |
-| `.vtt` | WebVTT                    | ✅     | ✅     |
+| ext    | name                      | read  | write | Flags |
+|--------|---------------------------|-------|-------|-------|
+| `.ass` | Advanced SubStation Alpha | ❌     | ❌     | TT    |
+| `.sbv` | SubViewer                 | ✅     | ✅     | TT    |
+| `.srt` | SubRip                    | ✅     | ✅     | TT    |
+| `.ssa` | Sub Station Alpha         | ❌     | ❌     | TT    |
+| `.sub` | MicroDVD                  | ✅     | ✅     | TF    |
+| `.vtt` | WebVTT                    | ✅     | ✅     | TT    |
 
 <small>Listed formats that are currently unsupported may be added at a later version</small>
+
+Flag Information:
+```text
+T. = Text Based
+B. = Bitmap Based
+.T = Time-Based
+.F = Frame-Based
+```
 
 ## Examples
 
