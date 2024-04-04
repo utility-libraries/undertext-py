@@ -9,7 +9,7 @@ from os import PathLike
 from ..structures import Caption
 
 
-def write_microdvd(captions: t.List[Caption], filename: t.Union[str, PathLike, t.TextIO], fps: int = None) -> None:
+def write_microdvd(captions: t.Iterable[Caption], filename: t.Union[str, PathLike, t.TextIO], fps: int = None) -> None:
     stream = io.StringIO()
 
     if fps is None:

@@ -26,7 +26,7 @@ ALIAS_MAP = dict(
 )
 
 
-def dumps(captions: t.List[Caption], fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> None:
+def dumps(captions: t.Iterable[Caption], fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> None:
     r"""
     dumps some captions into a file
 

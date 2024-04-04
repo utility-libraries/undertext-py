@@ -9,7 +9,7 @@ from ..structures import Caption
 from ..util import format_ts_dot as format_ts
 
 
-def write_webvtt(captions: t.List[Caption], filename: t.Union[str, PathLike, t.TextIO],
+def write_webvtt(captions: t.Iterable[Caption], filename: t.Union[str, PathLike, t.TextIO],
                  header: str = None) -> None:
     stream = io.StringIO()
 

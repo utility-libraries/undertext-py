@@ -9,7 +9,7 @@ from ..structures import Caption
 from ..util import format_ts_dot as format_ts
 
 
-def write_subviewer(captions: t.List[Caption], filename: t.Union[str, PathLike, t.TextIO]) -> None:
+def write_subviewer(captions: t.Iterable[Caption], filename: t.Union[str, PathLike, t.TextIO]) -> None:
     r"""
     writes as SubViewer 2.0
     https://wiki.videolan.org/SubViewer/

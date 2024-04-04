@@ -9,7 +9,7 @@ from ..structures import Caption
 from ..util import format_ts_comma as format_ts
 
 
-def write_subrip(captions: t.List[Caption], filename: t.Union[str, PathLike, t.TextIO]) -> None:
+def write_subrip(captions: t.Iterable[Caption], filename: t.Union[str, PathLike, t.TextIO]) -> None:
     stream = io.StringIO()
 
     for i, caption in enumerate(captions):
