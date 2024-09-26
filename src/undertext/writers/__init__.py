@@ -26,7 +26,7 @@ ALIAS_MAP = dict(
 )
 
 
-def dumps(captions: t.Iterable[Caption], fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> None:
+def dump(captions: t.Iterable[Caption], fp: t.Union[str, PathLike, t.TextIO], fmt: str = None, **kwargs) -> None:
     r"""
     dumps some captions into a file
 
@@ -38,12 +38,37 @@ def dumps(captions: t.Iterable[Caption], fp: t.Union[str, PathLike], fmt: str = 
     fp = Path(fp)
 
     if fmt is None:
-        fmt = fp.suffix[1:]
-        writer = EXT_MAP.get(fmt.lower())
+        fmt = fp.suffix[1:].lower()
+        writer = EXT_MAP.get(fmt)
     else:
-        writer = ALIAS_MAP.get(fmt.lower()) or EXT_MAP.get(fmt.lower())
+        fmt = fmt.lower()
+        writer = ALIAS_MAP.get(fmt) or EXT_MAP.get(fmt)
 
     if writer is None:
         raise ValueError(f"Unknown format ({fmt!s})")
 
-    return writer(captions, fp, **kwargs)
+    if isinstance(fp, t.TextIO):
+        writer(captions, fp, **kwargs)
+    else:
+        with open(fp, 'w') as f:
+            writer(captions, f, **kwargs)
+
+
+def dumps(captions: t.Iterable[Caption], fmt: str, **kwargs) -> str:
+    r"""
+    dumps some captions into a file
+
+    :param captions: captions to dump
+    :param fmt: specific format name
+    :param kwargs: optional arguments some formats may need
+    """
+    from io import StringIO
+
+    fmt = fmt.lower()
+    writer = ALIAS_MAP.get(fmt) or EXT_MAP.get(fmt)
+    if writer is None:
+        raise ValueError(f"Unknown format ({fmt!s})")
+
+    with StringIO() as out:
+        writer(captions, out, **kwargs)
+        return out.getvalue()

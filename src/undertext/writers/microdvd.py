@@ -9,9 +9,7 @@ from os import PathLike
 from ..structures import Caption
 
 
-def write_microdvd(captions: t.Iterable[Caption], filename: t.Union[str, PathLike, t.TextIO], fps: int = None) -> None:
-    stream = io.StringIO()
-
+def write_microdvd(captions: t.Iterable[Caption], fp: t.TextIO, fps: int = None) -> None:
     if fps is None:
         warnings.warn("Missing fps specification for reading MicroDVD.\n"
                       "MicroDVD works with frames instead of timestamps. "
@@ -21,10 +19,4 @@ def write_microdvd(captions: t.Iterable[Caption], filename: t.Union[str, PathLik
     for caption in captions:
         start = round(caption.start * fps)
         end = round(caption.end * fps)
-        stream.write(f"{{{start}}}{{{end}}}{'|'.join(caption.lines)}\r\n")
-
-    if isinstance(filename, (str, PathLike)):
-        with open(filename, 'w') as file:
-            file.write(stream.getvalue())
-    else:
-        filename.write(stream.getvalue())
+        fp.write(f"{{{start}}}{{{end}}}{'|'.join(caption.lines)}\r\n")

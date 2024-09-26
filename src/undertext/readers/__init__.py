@@ -12,6 +12,9 @@ from .subviewer import read_subviewer
 from .webvtt import read_webvtt
 
 
+__all__ = ['load', 'loads']
+
+
 EXT_MAP = dict(
     sbv=read_subviewer,
     srt=read_subrip,
@@ -26,7 +29,7 @@ ALIAS_MAP = dict(
 )
 
 
-def loads(fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> t.List[Caption]:
+def load(fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> t.List[Caption]:
     r"""
     load the captions from a file
 
@@ -39,11 +42,27 @@ def loads(fp: t.Union[str, PathLike], fmt: str = None, **kwargs) -> t.List[Capti
 
     if fmt is None:
         fmt = fp.suffix[1:]
-        reader = EXT_MAP.get(fmt.lower())
-    else:
-        reader = ALIAS_MAP.get(fmt.lower()) or EXT_MAP.get(fmt.lower())
 
+    with open(fp, "r") as f:
+        return loads(buffer=f, fmt=fmt, **kwargs)
+
+
+def loads(buffer: t.Union[str, t.TextIO], fmt: str, **kwargs) -> t.List[Caption]:
+    r"""
+    load the captions
+
+    :param buffer: subtitle data to load
+    :param fmt: specific format name
+    :param kwargs: optional arguments some formats may need
+    :return: Caption[]
+    """
+    fmt = fmt.lower()
+    reader = ALIAS_MAP.get(fmt) or EXT_MAP.get(fmt)
     if reader is None:
         raise ValueError(f"Unknown format ({fmt!s})")
 
-    return reader(fp, **kwargs)
+    if isinstance(buffer, str):
+        from io import StringIO
+        buffer = StringIO(buffer)
+
+    return reader(buffer, **kwargs)

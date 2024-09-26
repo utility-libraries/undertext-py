@@ -38,6 +38,6 @@ __version__ = '.'.join(str(_) for _ in __version_info__)
 from .exceptions import *
 from .structures import *
 from . import readers, writers
-from .readers import loads
-from .writers import dumps
+from .readers import load, loads
+from .writers import dump, dumps
 from .extra import clean_captions
