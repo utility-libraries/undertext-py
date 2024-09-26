@@ -2,9 +2,8 @@
 r"""
 
 """
-import re
 from pathlib import Path
-from . import loads, dumps
+from . import load, dump
 
 
 def cmd_read(input_fp, after: float = None, before: float = None, **kwargs) -> None:
@@ -12,7 +11,7 @@ def cmd_read(input_fp, after: float = None, before: float = None, **kwargs) -> N
     if not input_fp.is_file():
         raise FileNotFoundError(str(input_fp))
 
-    for caption in loads(input_fp, **kwargs):
+    for caption in load(input_fp, **kwargs):
         if after and caption.start <= after:
             continue
         if before and caption.end >= before:
@@ -34,5 +33,5 @@ def cmd_convert(input_fp: str, output_fp: str, overwrite: bool = False, **kwargs
     input_kwargs = {key[6:]: value for key, value in kwargs.items() if key.startswith("input_")}
     output_kwargs = {key[7:]: value for key, value in kwargs.items() if key.startswith("output_")}
 
-    captions = loads(input_fp, **input_kwargs)
-    dumps(captions, output_fp, **output_kwargs)
+    captions = load(input_fp, **input_kwargs)
+    dump(captions, output_fp, **output_kwargs)

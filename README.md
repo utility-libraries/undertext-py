@@ -32,7 +32,7 @@ pip3 install undertext
 | `.sub` | MicroDVD                  | ✅     | ✅     | TF    |
 | `.vtt` | WebVTT                    | ✅     | ✅     | TT    |
 
-<small>Listed formats that are currently unsupported may be added at a later version</small>
+<small>*Listed formats that are currently unsupported may be added at a later version</small>
 
 Flag Information:
 ```text
@@ -47,8 +47,8 @@ B. = Bitmap Based
 ```python
 import undertext
 
-captions = undertext.loads("example.en.srt")
-undertext.dumps(captions, "example.en.vtt")
+captions = undertext.load("example.en.srt")
+undertext.dump(captions, "example.en.vtt")
 ```
 
 ```python
@@ -58,7 +58,7 @@ captions = [
     undertext.Caption(start=0, end=10, text="Hello"),
     undertext.Caption(start=10, end=20, text="World"),
 ]
-undertext.dumps(captions, "out.srt")
+undertext.dump(captions, "out.srt")
 ```
 
 ## CLI
